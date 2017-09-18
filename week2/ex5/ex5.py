@@ -1,0 +1,4 @@
+plainText = "informationsecurity"
+
+
+print plainText
