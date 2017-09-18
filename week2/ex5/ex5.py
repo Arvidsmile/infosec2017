@@ -49,3 +49,9 @@ originalText = vernam(cipherText, key)
 # Display the results
 displayText(originalText)
 displayText(cipherText)
+
+# ~~~~~ Second part of exercise ~~~~~~
+keyAlt = "tlftrffwmixor|{xbch"
+#. Display alternative original text
+displayText(vernam(cipherText, keyAlt))
+# output: knapsackbagssecrets
