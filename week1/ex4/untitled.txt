@@ -1,0 +1,77 @@
+i came to security from cryptography and thought of the problem in 
+a military like fashion most writings about security
+come from this perspective and it can be summed up pretty easily
+security threats are to be avoided using preventive countermeasures
+this is how encryption works the threat is eavesdropping
+and encryption provides the prophylactic this
+could all be explained with block diagrams alice is communicating
+with bob both are identified by boxes and there is a line
+between them signifying the communication eve is the eavesdroppers
+he also is a box and has a dotted line attached to the
+communications line she is able to intercept the communication
+the only way to prevent eve from learning what alice a
+nd bob are talking about is through a preventive countermeasure
+encryption theres no detection theres no response theres
+no risk management you have to avoid the threat for decades
+we have used this approach to computer security we draw boxes
+around the different players and lines between them we define
+different attackers eavesdroppers impersonators thieves
+and their capabilities we use preventive countermeasures
+like encryption and access control to avoid different threats
+if we can avoid the threats weve won if we cant weve lost
+imagine my surprise when i learned that the world doesnt
+work this way some history from the vigenere wiki page the first
+well documented description of a polyalphabetic cipher was
+formulated by leon battista alberti around and used a metal
+cipher disc to switch between cipher alphabets albertis
+system only switched alphabets after several words and
+switches were indicated by writing the letter of the corresponding
+alphabet in thecipher text later in johannes trithemius in his
+work poligraphia invented the tabula recta a critical component
+of the vigenre cipher the trithemius cipher however only
+provided a progressive rigid and predictable system for switching
+between cipher alphabets what is now known as the vigenere cipher
+was originally described by giovan battista bellaso in his book
+la cifra del sig giovanbattista bellaso he built upon the tabula 
+recta of trithemius but added a repeating countersignakey to switch 
+cipher alphabets every letter whereas alberti
+and trithemius used a fixed pattern of substitutions bellasos
+scheme meant the pattern of substitutions could be easily
+changed simply by selecting a new key keys were typically
+single words or short phrases known to both parties in advance
+or transmitted out of band along with the message bellasos
+method thus required strong security for only the key as it
+is relatively easy to secure a short keyphrase say by a
+previous private conversation bellasos system was considerably
+more secure blaisede vigenere published his description of a
+similar but stronger auto key cipher before the court of henry
+iii of france in later in the th century the invention of
+bellasos cipher was misattributed to vigenere david kahn in
+his book the code breakers lamented the misattribution by
+saying that his tory had ignored this important contribution
+and instead named a regressive and elementary cipher for him
+vigenere though he had nothing to do with it the vigenere
+cipher gained a reputation for being exceptionally strong
+noted author and mathematician charles lutwidg edodgson lewis
+carroll called the vigenere cipher unbreakable in his piece
+the alphabet cipher in a childrens magazine in scientific
+american described the vigenre cipher as impossible of translation
+this reputation was not deserved charles babbage is known to have
+broken a variant of the cipher as early as however he didnt publish
+his work kasiski entirely broke the cipher and published the
+technique in the th century even before this though some skilled
+cryptanalysts could occasionally break the cipher in the th
+century cryptographic slide rule used as a calculation aid by
+the swiss army between and the vigenere cipher is simple enough
+to be a field cipher if it is used in conjunction with cipher
+disks the confederate states of america for example used a
+brass cipher disk to implement the vigenere cipher during
+the american civil war the confederacys messages were far
+from secret and the union regularly cracked their messages
+throughout the war the confederate leadership primarily relied
+upon three keyphrases manchester bluff complete victory and
+as the war came to a close come retribution gilbert vernam
+tried to repair the broken cipher creating the vernam vigenere
+cipher in but no matter what he did the cipher was still
+vulnerable to cryptanalysis vernams work however eventually
+led to the one time pad a provably unbreakable cipher
