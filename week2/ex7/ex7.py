@@ -30,12 +30,12 @@ def greatestCommonDiv(x, y):
 def isRelativePrime(x, y):
 	return greatestCommonDiv(x, y) == 1
 
-# Takes the current total value of the superincreasing
+# Takes the current total value (sum of elements) of the superincreasing
 # knapsack and finds two numbers that are relatively prime
 # that can be used to create the general knapsack, returns
 # Returns a tuple of (m, n)
 def genMultipliers(currentTotal):
-	n = currentTotal + 1
+	n = currentTotal + 1 # <-- n must be larger than total sum
 	m_n_found = False
 	while(m_n_found == False):
 		for m in range(int(n - n * 0.999), n): 
@@ -44,8 +44,8 @@ def genMultipliers(currentTotal):
 				m_n_found = True
 				break
 		# No relative prime found for n (uncertain if this is 
-		# mathematically sound)
-		n += 1
+		# mathematically sound...)
+		n += 1 # Increment n by 1 and try again..
 	return multipliers
 
 # Takes a superincreasingknapsack, multiplier m and modulus n and create
@@ -77,6 +77,43 @@ def modinv(a, m):
 
 #############################################################3
 
+### Decryption Code ###
+
+# Takes a private key (superincreasing knapsack) and
+# the value to decrypt
+def solveSuperKnapsack(superKnap, value):
+	binaryMsg = [0] * len(superKnap)
+	total = 0
+	# Iterate backwards
+	for i in range(len(superKnap) - 1, -1, -1):
+		test = total + superKnap[i]
+		if (test > value):
+			continue
+		elif(test < value):
+			binaryMsg[i] = 1
+			total += superKnap[i]
+		else:
+			binaryMsg[i] = 1
+			break
+	return binaryMsg
+
+# Take a list of 1's and 0's, split it into blocks of 8 bits,
+# convert those lists of size 8 into an integer value and finally
+# convert that integer value into a char-type, add this char
+# type to the output string
+def binaryArrayToString(binaryArray):
+	output = ""
+	# move 8 steps at a time to grab a character from binaryArray
+	for i in range(0, len(binaryArray), 8):
+		byte = (binaryArray[i:i+8])
+		asciiChr = 0
+		for bit in byte:
+			asciiChr = (asciiChr << 1) | bit
+		output += chr(asciiChr)
+
+	return output
+
+###########################################################
 
 # Everything is ready, lets make a public and private key:
 #. Public key, superKnapsack is a tuple (see line 3-5)
@@ -96,8 +133,21 @@ multInv = modinv(m_n[0], m_n[1])
 print "Multiplicative inverse : m^-1 mod n = " + str(multInv)
 print "~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-
-
 print "TEST"
 print genGeneralKnapsack([2, 3, 7, 14, 30, 57, 120, 251], 41, 491)
 print modinv(41, 491)
+
+# --------------------------------------------
+# Hardcoded values that are related to the key sent to Teacher Assistant
+myPublicKey = [104, 208, 728, 1144, 2704, 
+5304, 10608, 21320, 42640, 85280, 
+65631, 26333, 52562, 104812, 78, 156]
+
+myMultiplier = 104,
+myModulo = 104929
+
+myPrivateKey = [1, 2, 7, 11, 26, 51, 102, 205, 410, 820, 1640, 3280, 6559, 13115, 26233, 52466]
+myMultInv = 15134
+
+# --------------------------------------------
+
