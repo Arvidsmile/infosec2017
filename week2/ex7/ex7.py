@@ -37,7 +37,8 @@ def isRelativePrime(x, y):
 def genMultipliers(currentTotal):
 	n = currentTotal + 1 # <-- n must be larger than total sum
 	m_n_found = False
-	while(m_n_found == False):
+	while(m_n_found == False): 	# Start looking for m's at
+								# around 1/1000's of n
 		for m in range(int(n - n * 0.999), n): 
 			if(isRelativePrime(m, n) and (m != 1)):	 	
 				multipliers = (m, n)
@@ -109,6 +110,7 @@ def binaryArrayToString(binaryArray):
 		asciiChr = 0
 		for bit in byte:
 			asciiChr = (asciiChr << 1) | bit
+		print str(asciiChr) + " gives: " + chr(asciiChr)
 		output += chr(asciiChr)
 
 	return output
@@ -133,10 +135,6 @@ multInv = modinv(m_n[0], m_n[1])
 print "Multiplicative inverse : m^-1 mod n = " + str(multInv)
 print "~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-print "TEST"
-print genGeneralKnapsack([2, 3, 7, 14, 30, 57, 120, 251], 41, 491)
-print modinv(41, 491)
-
 # --------------------------------------------
 # Hardcoded values that are related to the key sent to Teacher Assistant
 myPublicKey = [104, 208, 728, 1144, 2704, 
@@ -146,8 +144,36 @@ myPublicKey = [104, 208, 728, 1144, 2704,
 myMultiplier = 104,
 myModulo = 104929
 
-myPrivateKey = [1, 2, 7, 11, 26, 51, 102, 205, 410, 820, 1640, 3280, 6559, 13115, 26233, 52466]
+myPrivateKey = [1, 2, 7, 11, 26, 51, 102, 205, 410, 
+			820, 1640, 3280, 6559, 13115, 26233, 52466]
 myMultInv = 15134
-
 # --------------------------------------------
 
+print "\n---------- 	DECRYPTION	--------------\n"
+### Time to decrypt message from TA ###
+#1. Read file
+file = open("encrypted", 'r')
+
+#2. Decrypt block by block until end of file
+plainText = ""
+for line in file:
+	# Decrypted values appear as hex, so we convert to decimal
+	val = (int(line, 16) * myMultInv) % myModulo 
+	solution = solveSuperKnapsack(myPrivateKey, val)
+	# (Due to my own misunderstanding of the exercise this
+	# reversed(...) call is necessary for decryption to work properly)
+	plainText += binaryArrayToString(list(reversed(solution)))
+
+#3. Display the decrypted text
+print plainText
+
+# Output:
+# The Bosnian War was an international armed conflict that took
+#  place in Bosnia and Herzegovina between 1992 and 1995. 
+#  Following a number of violent incidents in early 1992, 
+#  the war is commonly viewed as having started on 6 April 1992. 
+#  The war ended on 14 December 1995. The main belligerents were 
+#  the forces of the Republic of Bosnia and Herzegovina and those 
+#  of the self-proclaimed Bosnian Serb and Bosnian Croat entities 
+#  within Bosnia and Herzegovina, Republika Srpska and Herzeg-Bosnia, 
+#  which were led and supplied by Serbia and Croatia, respectively.
