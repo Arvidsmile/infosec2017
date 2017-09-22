@@ -1,7 +1,10 @@
 import sys
-
-K1 = '184b4d16bbe3200c5a5f500cc09efa68cddd42cbda27c1e49fa7a0f2e2735007'
-K2 = 'bd11fd28eabd0b87f2ff4595a50041bfb882bbf8ae058ea5d677c7da07d43786'
+#sha256sum for 'Feistel'
+#K1 = '184b4d16bbe3200c5a5f500cc09efa68cddd42cbda27c1e49fa7a0f2e2735007'
+#K2 = 'bd11fd28eabd0b87f2ff4595a50041bfb882bbf8ae058ea5d677c7da07d43786'
+#sha256sum for 'The Feistel Cipher'
+K1 = '9b3fab6d542dafc4dec9ed03243b63ff672ba11c955a7feb9c3893093ad83ae9'
+K2 = 'a4cb34202540541b95fd86ad5fbe2b9c85388adadab4d476741f48058af91be5'
 def readFile(name):
 	file = open(name,'r')
 	return file.read()
@@ -128,13 +131,13 @@ def main():
 	print finalText
 
 	#reverse
-	for i in range(rounds):
-		blockedText = feistel(blockedText, i, encryptMode == False)
-		print 'encrypted blockedText'
-		print blockedText
-	print 'processed text'
-	finalText = binaryArrayToString(blockedText)
-	print finalText
+	#for i in range(rounds):
+	#	blockedText = feistel(blockedText, i, encryptMode == False)
+	#	print 'encrypted blockedText'
+	#	print blockedText
+	#print 'processed text'
+	#finalText = binaryArrayToString(blockedText)
+	#print finalText
 
 
 
