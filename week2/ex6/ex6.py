@@ -1,10 +1,5 @@
 import sys
-#sha256sum for 'Feistel'
-#K1 = '184b4d16bbe3200c5a5f500cc09efa68cddd42cbda27c1e49fa7a0f2e2735007'
-#K2 = 'bd11fd28eabd0b87f2ff4595a50041bfb882bbf8ae058ea5d677c7da07d43786'
-#sha256sum for 'The Feistel Cipher'
-#K1 = '9b3fab6d542dafc4dec9ed03243b63ff672ba11c955a7feb9c3893093ad83ae9'
-#K2 = 'a4cb34202540541b95fd86ad5fbe2b9c85388adadab4d476741f48058af91be5'
+import hashlib
 
 K1 = 'c73b13d07b16bf503b19aa9055b9951b5e899116383ef115982b8b7a6c54f0f4'
 K2 = '5d3e6edec3a7e8594a3ede60242f8ae98de5993b23dcbe6896df3f76c1eef132'
@@ -12,6 +7,10 @@ K2 = '5d3e6edec3a7e8594a3ede60242f8ae98de5993b23dcbe6896df3f76c1eef132'
 def readFile(name):
 	file = open(name,'r')
 	return file.read()
+
+def sha256 ( input ) :
+	input = ' '. join ( input )
+	return list ( hashlib . sha256 ( str ( input ) . encode ('utf -8 ') ) . hexdigest () )
 
 def Base10toBinary(integer):
 	array = format(integer, '08b')
@@ -23,7 +22,6 @@ def Base10toBinary(integer):
 		else:
 			bit1 = 1
 		li.append(bit1)
-	#number = bin(ord(char))
 	return li
 
 def Base16toBinary(char1):
@@ -64,8 +62,6 @@ def feistel(blockedText, round, encryptMode):
 	else:
 		for i in range(4):
 			key.append(Base16toBinary(K2[round*4+i]))
-	print 'key'
-	print key
 	#Encrypt
 	for i in range(len(blockedText)/8):
 		newLeft = []
@@ -97,7 +93,6 @@ def feistel(blockedText, round, encryptMode):
 def xor(byte, key):
 	result = []
 	for i in range(len(byte)):
-		#change from string to bits
 		#xor
 		xorbit = byte[i] ^ key[i]
 		result.append(xorbit)
@@ -116,6 +111,11 @@ def binaryArrayToString(blockedText):
 	return output
 
 def main():
+	key = raw_input("Key: ")
+	print key
+	K1 = sha256(key)
+	print K1
+	K2 = sha256(K1)
 	rounds = input("Num of rounds: ")
 	encrypt = raw_input("1 == Encrypt, 0 == Decrypt : ")
 	if encrypt == 1:
@@ -123,27 +123,15 @@ def main():
 	else:
 		encryptMode = False
 	text = readFile(sys.argv[1])
-	print "Original text: " + text + "\n"
+	print 'Original Text: '
+	print text
 	blockedText = blockText(text);
-	print blockedText
 	for i in range(rounds):
 		blockedText = feistel(blockedText, i, encryptMode)
-		print 'encrypted blockedText'
-		print blockedText
-	print 'processed text'
+	#Change from binary to String character
 	finalText = binaryArrayToString(blockedText)
+	print 'Final Text: '
 	print finalText
-
-	#reverse
-	# for i in range(rounds):
-	# 	blockedText = feistel(blockedText, i, encryptMode == False)
-	# 	print 'encrypted blockedText'
-	# 	print blockedText
-	# print 'processed text'
-	# finalText = binaryArrayToString(blockedText)
-	# print finalText
-
-
 
 if __name__ == "__main__":
     main()
