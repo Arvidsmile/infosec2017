@@ -111,11 +111,11 @@ def binaryArrayToString(blockedText):
 	return output
 
 def main():
-	key = raw_input("Key: ")
-	print key
-	K1 = sha256(key)
-	print K1
-	K2 = sha256(K1)
+	# key = raw_input("Key: ")
+	# print key
+	# K1 = sha256(key)
+	# print K1
+	# K2 = sha256(K1)
 	rounds = input("Num of rounds: ")
 	encrypt = raw_input("1 == Encrypt, 0 == Decrypt : ")
 	if encrypt == 1:
