@@ -76,7 +76,7 @@ def modinv(a, m):
     else:
         return x % m
 
-#############################################################3
+########################################################
 
 ### Decryption Code ###
 
@@ -117,7 +117,7 @@ def binaryArrayToString(binaryArray):
 
 ###########################################################
 
-# Everything is ready, lets make a public and private key:
+# This code was used to create my knapsacks and variables
 #. Public key, superKnapsack is a tuple (see line 3-5)
 superKnapsack = genSuperIncKnapsack(int(raw_input("Size of knapsack: ")))
 m_n = genMultipliers(superKnapsack[1])
