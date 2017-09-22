@@ -57,7 +57,7 @@ def feistel(blockedText, round):
 			newLeft = newLeft + [blockedText[i*8+(4+j)]]
 			print newLeft
 			#Collect old Left into a list 
-			newRight = xor([blockedText[i*8+j]], key[j])
+			newRight = xor(blockedText[i*8+j], key[j])
 			oldLeft = oldLeft + [blockedText[i*8+j]]
 		for k in range(4):
 			newRight[k] = oldLeft[k]
@@ -77,9 +77,7 @@ def xor(byte, key):
 			bit2 = 1
 		#xor
 		xorbit = bit1 ^ bit2
-		print 'xorbit'
-		print xorbit
-		result = result + [xorbit]
+		result.append(xorbit)
 	print 'result' 
 	print result
 
