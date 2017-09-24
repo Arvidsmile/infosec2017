@@ -78,18 +78,6 @@ def from_bytes (data, big_endian = False):
         num += byte << (offset * 8)
     return num
 
-def binaryArrayToString(blockedText):
-	binaryArray = sum(blockedText,[])
-	output = ""
-	# move 8 steps at a time to grab a character from binaryArray
-	for i in range(0, len(binaryArray), 8):
-		byte = (binaryArray[i:i+8])
-		asciiChr = 0
-		for bit in byte:
-			asciiChr = (asciiChr << 1) | bit
-		output += chr(asciiChr)
-	return output
-
 def intToChar(blockedText):
 	text = ''
 	print 'Blocked Text'
