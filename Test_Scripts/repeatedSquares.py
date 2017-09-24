@@ -21,6 +21,10 @@ def repeatedSquaresModulus(base, exponent, modulus):
 
 	return output
 
-print repeatedSquaresModulus(5, 20, 35)
-print (pow(5, 20) % 35)
+base = int(raw_input("Base: "))
+exp = int(raw_input("Exponent: "))
+mod = int(raw_input("Modulus: "))
+
+print repeatedSquaresModulus(base, exp, mod)
+
 
