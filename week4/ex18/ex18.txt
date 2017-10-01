@@ -1,0 +1,8 @@
+The number of comparissons between N attempts is N(N-1)/2,
+which is about N^2. Since there are 2^256 different outputs, 
+we should expect to find a match at about the point where
+N^2 = 2^256. Thus when N = 2^(256/2) = 2^128.
+If we estimate 2^n as 10^(n/3), we get N = 10^(128/3). 
+Given that there are 7*10^9 people on earth, we would expect
+the amount of time to pass before a collision to be 
+10^(128/3)/(7*10^9) = 1/7 * 10^(128/3 - 9).
