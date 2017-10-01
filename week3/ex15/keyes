@@ -1,0 +1,17 @@
+# Public Key
+a = 3
+b = 5
+mod = 157
+point = (4, 9)
+
+# Private key
+m = 24
+
+# sent to TA:
+3
+5
+157
+4
+9
+19
+135
