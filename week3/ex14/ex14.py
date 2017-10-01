@@ -34,25 +34,19 @@ def ellipticCurveAddition(p1, p2, a, mod):
 
 	return (x3, y3)
 
-# Book test-case:
-p1 = (1, 4)
-p2 = (3, 1)
-mod = 5
-a = 2
+m = int(raw_input("multiplier: "))
+a = int(raw_input("a: "))
+mod = int(raw_input("modulus: "))
+point = (int(raw_input("pointX: ")), int(raw_input("pointY: ")))
 
-# (2, 0) = (1, 4) + (3, 1)
-#print ellipticCurveAddition(p1, p2, a, mod)
+# On curve : y^2 = x^3 + ax + b % modulus
+# given multiplier (scalar) and a point(Xp, Yp)
+# to be multiplied by repeated addition
+def ellipticCurveMult(multiplier, point, a, modulus):
+	increment = point
+	for i in range(multiplier - 1):
+		point = ellipticCurveAddition(point, increment, a, modulus)
+	return point
 
-# (? , ?) = (1, 4) * 2
-#print ellipticCurveAddition(p1, p1, a, mod)
-
-result = (2, 7)
-for i in range(16):
-	print result
-	result = ellipticCurveAddition(result, result, 11, 167)
-
-print result
-
-
-
+print "15 * (2, 7) = " + str(ellipticCurveMult(m, point, a, mod))
 
