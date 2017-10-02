@@ -54,7 +54,7 @@ def main():
 	factors = prime_factors(prime-1)
 	print factors
 	gener = generators(factors,prime)
-	print gener
+	print gener #<-- remove [-1] to show all generators
 
 if __name__ == "__main__":
     main()

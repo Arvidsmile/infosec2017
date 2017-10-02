@@ -46,20 +46,7 @@ base = int(raw_input("Base: "))
 exp = int(raw_input("Exponent: "))
 mod = int(raw_input("Modulus: "))
 
-timeRec = timer()
-print repeatedSquaresRec(base, exp, mod)
-timeRec = (timer() - timeRec)
-
-timeIter = timer()
-print repeatedSquaresIter(base, exp, mod)
-timeIter = (timer() - timeIter)
-
-# timeNaive = timer()
-# print naiveEponentiation(base, exp) % mod
-# timeNaive = (timer() - timeNaive)
-
-print "Recursive = " + str(timeRec)
-print "Iterative = " + str(timeIter)
-# print "Naive = " + str(timeNaive)
-
-
+print "Recursive solution = " + \
+	str(repeatedSquaresRec(base, exp, mod))
+print "Iterative solution = " + \
+	str(repeatedSquaresIter(base, exp, mod))
