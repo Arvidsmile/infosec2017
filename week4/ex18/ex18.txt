@@ -5,4 +5,4 @@ N^2 = 2^256. Thus when N = 2^(256/2) = 2^128.
 If we estimate 2^n as 10^(n/3), we get N = 10^(128/3). 
 Given that there are 7*10^9 people on earth, we would expect
 the amount of time to pass before a collision to be 
-10^(128/3)/(7*10^9) = 1/7 * 10^(128/3 - 9).
+10^(128/3)/(7.5*10^9) = 1/7.5 * 10^(128/3 - 9) days.
